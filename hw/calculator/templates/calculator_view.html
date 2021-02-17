@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="`en`">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+</head>
+<body>
+    <div class="container d-flex align-items-center flex-column">
+        <form class="form-horizontal" action="/calculator/" method="post">
+            {% if error %}
+                <h1 class="text-danger"> Division by zero!</h1>
+            {% endif %}
+            {% csrf_token %}
+          <div class="control-group mt-4">
+            <label class="control-label" for="firstNumber">First number</label>
+            <div class="controls">
+              <input type="number" id="firstNumber" name="first_number" required>
+            </div>
+          </div>
+           <div class="control-group mt-1">
+            <label class="control-label" for="secondNumber">Second number</label>
+            <div class="controls">
+              <input type="number" id="secondNumber" name="second_number" required>
+            </div>
+          </div>
+          <div class="control-group d-flex align-items-start flex-column">
+             <label class="radio mt-1">
+              <input type="radio" name="operation" id="optionsRadios1" value="add" checked>
+              add
+             </label>
+             <label class="radio mt-1">
+              <input type="radio" name="operation" id="optionsRadios2" value="subtract">
+              subtract
+             </label>
+              <label class="radio mt-1">
+              <input type="radio" name="operation" id="optionsRadios1" value="multiply">
+              multiply
+             </label>
+             <label class="radio mt-1">
+              <input type="radio" name="operation" id="optionsRadios2" value="divide">
+              divide
+             </label>
+              <button type="submit" class="btn btn-primary mt-2">Calculate</button>
+          </div>
+        </form>
+    </div>
+</script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/popper.min.js" %}"></script>
+</body>
+</html>
